@@ -26,7 +26,8 @@ namespace ODataResturantsService
 
             // Give readonly access to all of the entities
             config.SetEntitySetAccessRule("*", EntitySetRights.All);
-          
+            config.UseVerboseErrors = true;
+
             // Pagesize will change the max number of rows returned
             config.SetEntitySetPageSize("*", 10);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V3;
