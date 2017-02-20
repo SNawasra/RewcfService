@@ -7,13 +7,14 @@ using System;
 using System.Collections.Generic;
 using System.Data.Services;
 using System.Data.Services.Common;
+using System.Data.Services.Providers;
 using System.Linq;
 using System.ServiceModel.Web;
 using System.Web;
 
 namespace ODataResturantsService
 {
-    public class RDataResturant : DataService<devSource12BEntities>
+    public class RDataResturant : EntityFrameworkDataService<devSource12BEntities>
     {
         // This method is called only once to initialize service-wide policies.
         public static void InitializeService(DataServiceConfiguration config)
