@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1717BBBD-71B9-4450-A32E-8021DBCE5D8E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ODataResturantsService</RootNamespace>
+    <AssemblyName>ODataResturantsService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.5.6.4\lib\net40\Microsoft.Data.Services.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DevSource12B.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DevSource12B.edmx</DependentUpon>
+      <LastGenOutput>DevSource12B.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DevSource12B.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DevSource12B.edmx</DependentUpon>
+      <LastGenOutput>DevSource12B.cs</LastGenOutput>
+    </Content>
+    <Content Include="RDataResturant.svc" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccountExtB.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Announcement.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Attachment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AttachmentsAWS3.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Budget.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BudgetLocation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringCategory.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringEvent.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringEventDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringEventSegment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringEventTime.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringEventType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringItemType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringMenu.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringMenuItem.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringPaymentExpected.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringSetting.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringSource.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CateringTime.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommissaryCategory.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommissaryDay.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CommissaryLocationDay.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompanyLocation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactExtB.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controller.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAddressBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerAddressExtensionBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Deposit.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DevSource12B.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevSource12B.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DevSource12B.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DevSource12B.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevSource12B.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="dm_attribute1.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_attribute1extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_attribute2.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_attribute2extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_autoid.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_autoidextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bank.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankActivity.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankActivityextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankRecDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankReconciliation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankReconciliationextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankRules.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_bankRulesextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringEventDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringEventDetailextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringItem.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringItemCategory.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringItemCategoryextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_cateringItemextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_CheckRun.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_CheckRunInvoice.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_dailySalesSummary.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_dailySalesSummaryextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeAvailability.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeJobTitle.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeJobTitleextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeNote.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_employeeNoteextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_EmployeeNoteReason.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_EmployeeNoteReasonextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_eventEmployeeDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_eventEmployeeDetailextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_fiscalDate.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_fiscalDateextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_fiscalPeriodSetup.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_fiscalPeriodSetupextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchisee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeContact.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeContactextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeDailySales.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeDailySalesextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeLocation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeLocationextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeReviews.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchiseeReviewsextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchisingFee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_franchisingFeeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_glAccount.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_glAccountextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_gltype.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_gltypeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_ingredient.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_ingredientextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_item.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory1.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory1extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory2.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory2extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory3.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemCategory3extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemLocation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_itemLocationextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_jobResponsibility.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_jobTitle.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_jobTitleextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_jobTitleResponsibility.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_labor.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_laborextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_legalEntity.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_legalEntityextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_location.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_locationextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_locationGroup.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_locationGroupDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_locationGroupDetailextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_locationGroupextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItem.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory1.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory1extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory2.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory2extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory3.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemCategory3extensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemLink.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_menuItemLinkextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paycode.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paycodeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paymentTerm.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paymentTermextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paymentTypeAccount.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_paymentTypeAccountextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_POSEmployee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_POSEmployeeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_preferences.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_preferencesextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_reportDefaults.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_reportDefaultsextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_reportFavorites.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_reportFavoritesextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_sales.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesAccount.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesAccountextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesCategory.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesCategoryextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesDetailextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesPayment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_salesPaymentextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_serviceType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_serviceTypeextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transaction.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transactionApply.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transactionApplyextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transactionDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transactionDetailextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_transactionextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_unitOfMeasure.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_unitOfMeasureextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_UserActivity.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_UserActivityextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_VendorItem.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dm_VendorItemextensionbase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeJobResponsibility.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeJobTitle.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeMerge.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feature.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fn_GetFormatStrings_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fn_GetGuidsFromString_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fn_GetUsersFiscalPeriodAndYear_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fn_LocationFilter_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FoodType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Forecast.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImportLog.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImportMapping.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImportType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ItemMultiplier.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobTitle.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Labor.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationCategory.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationPOSGroup.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocationType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Note.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OperationalReportsCategoryNetSale.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Paidout.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PaidOutType.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="POSSystem.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceLevel.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PriceLevelFeature.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="processedAttachment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="R365144View.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365fn_CommissaryLocationSecurity_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365fn_LocationSecurity2_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365fn_LocationSecurityLogin_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365fn_LocationSecurity_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365fn_SplitString_Result.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365ReportTrxDetailA.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365R_RFYIAccounts.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="R365_RFYI_ORG.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RDataResturant.svc.cs">
+      <DependentUpon>RDataResturant.svc</DependentUpon>
+    </Compile>
+    <Compile Include="RecipePortionCost.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleTemplate.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleTemplateRole.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Room.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sale.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesPayment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SavedMapping.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SavedView.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SavedViewDefault.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Schedule.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleEvent.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SetupSection.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SetupStep.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShiftTemplate.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Site.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQLScript.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StringMapBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="systemUserAndEmployee.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemUserBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeamBase.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Theme.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionAuditLog.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDetail.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDetailAuditLog.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UploadAttachment.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserLocation.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VendorGroup.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VERSION.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewTEST.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vUser.cs">
+      <DependentUpon>DevSource12B.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="DevSource12B.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DevSource12B.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DevSource12B.edmx.diagram">
+      <DependentUpon>DevSource12B.edmx</DependentUpon>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52581</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52581/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
